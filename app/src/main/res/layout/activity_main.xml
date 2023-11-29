@@ -6,11 +6,9 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <!--
     <com.example.advancedcanvas.WritingView
         android:id="@+id/myview"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
- -->
 
 </LinearLayout>
