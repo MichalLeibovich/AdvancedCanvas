@@ -15,28 +15,35 @@ import java.util.ArrayList;
 
 public class WritingView extends View
 {
-    Paint paint;
+    Paint drawColor;
     int x1, y1, x2, y2;
     Mypoint lastpoint;
+
+    float stroke = 20f;
+    int newColor = Color.GREEN;
+
     ArrayList<Line> lines = new ArrayList<>();
 
 
     public WritingView(Context context) {
         super(context);
-        init();
+        init(newColor, stroke);
     }
 
     public WritingView(Context context, @Nullable AttributeSet attrs) {
         super(context, attrs);
-        init();
+        init(newColor, stroke);
     }
 
-    public void  init() {
-        paint = new Paint();
-        paint.setColor(Color.GREEN);
-        paint.setStrokeWidth(15f);
-        paint.setStyle(Paint.Style.STROKE);
-        paint.setStrokeJoin(Paint.Join.ROUND);
+    // We use this method for pass runtime color and stroke values.
+    public void  init(int color, float stroke) {
+        drawColor = new Paint();
+        drawColor.setColor(color);
+        drawColor.setStrokeWidth(stroke);
+        drawColor.setStyle(Paint.Style.FILL);
+        drawColor.setStrokeCap(Paint.Cap.ROUND);
+        drawColor.setStrokeJoin(Paint.Join.ROUND);
+        drawColor.setAntiAlias(true);
     }
 
     @Override
@@ -46,7 +53,7 @@ public class WritingView extends View
         // All things will be drawn here
         for (Line l :
              lines) {
-            canvas.drawLine(l.start.x, l.start.y, l.end.x, l.end.y, paint);
+            canvas.drawLine(l.start.x, l.start.y, l.end.x, l.end.y, l.draw);
         }
     }
 
@@ -63,12 +70,12 @@ public class WritingView extends View
             x2 = (int) event.getX();
             y2 = (int) event.getY();
             Mypoint newpoint = new Mypoint(x2, y2);
-            lines.add(new Line(lastpoint, newpoint));
+            lines.add(new Line(lastpoint, newpoint, drawColor));
             lastpoint = newpoint;
             invalidate();
         }
         else
         {}
-        return super.onTouchEvent(event);
+        return true;
     }
 }

@@ -6,9 +6,30 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <com.example.advancedcanvas.WritingView
-        android:id="@+id/myview"
+<!--    <com.example.advancedcanvas.WritingView-->
+<!--        android:id="@+id/myview"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="match_parent" />-->
+
+
+    <LinearLayout
+        android:gravity="center"
+        android:layout_weight="0.2"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        />
+
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_weight="0.1"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent">
+        <com.example.advancedcanvas.WritingView
+            android:id="@+id/myview"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+    </LinearLayout>
+
 
 </LinearLayout>
