@@ -15,9 +15,13 @@
     <LinearLayout
         android:gravity="center"
         android:layout_weight="0.2"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        />
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <ImageView
+            android:layout_width="50dp"
+            android:layout_height="50dp"/>
+    </LinearLayout>
+
 
 
     <LinearLayout
